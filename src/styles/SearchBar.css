@@ -1,0 +1,72 @@
+/* SearchBar.css */
+
+/* Container for the search bar */
+.search-bar-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Input field style */
+.search-bar-input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+/* Input field focus state */
+.search-bar-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+}
+
+/* Button style */
+.search-button {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.search-button:hover {
+    background-color: #45a049;
+}
+
+/* Suggestions dropdown */
+.suggestions-list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 300px;
+    list-style-type: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    z-index: 10;
+    max-height: 150px;
+    overflow-y: auto;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual suggestion item */
+.suggestion-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+/* Suggestion item hover effect */
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
