@@ -1,22 +1,41 @@
+:root {
+    --font-large: 1.8rem;
+    --font-medium: 1.2rem;
+    --font-small: 1rem;
+}
+
+.recent-searches-title {
+    font-size: var(--font-large);
+}
+
+.city-name {
+    font-size: var(--font-medium);
+}
+
+.no-recent-searches {
+    font-size: var(--font-medium);
+}
+
 /* Container for recent searches */
 .recent-searches-container {
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     font-family: 'Arial', sans-serif;
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
 }
 
 /* Title for recent searches */
 .recent-searches-title {
-    font-size: 22px;
-    color: #333;
-    margin-bottom: 15px;
+    font-size: var(--font-large);
+    margin: 0px;
+    padding: 10px;
+    color: #2c3e50;
     text-align: center;
+    line-height: 1.2;
 }
 
 /* Styling for the recent searches list */
@@ -44,8 +63,10 @@
 
 /* Styling for the city name */
 .city-name {
-    font-size: 16px;
+    font-size: var(--font-medium);
     color: #555;
+    margin: 0;
+    line-height: 1; /* Prevent unnecessary spacing */
 }
 
 /* Delete button styling */
@@ -57,6 +78,13 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: var(--font-medium);
+    line-height: 1; /* Ensure consistent height with text */
+}
+
+.delete-button:focus {
+    outline: 2px solid #34495e;
+    outline-offset: 2px;
 }
 
 .delete-button:hover {
@@ -65,8 +93,8 @@
 
 /* Message when no recent searches are available */
 .no-recent-searches {
-    color: #e74c3c;
-    font-size: 18px;
+    color: #e67e22;
+    font-size: var(--font-medium);
     text-align: center;
     font-weight: bold;
 }

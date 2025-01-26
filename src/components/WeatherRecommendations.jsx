@@ -1,3 +1,6 @@
+import React from "react";
+import "../styles/WeatherRecommendations.css";
+
 const WeatherRecommendations = ({ weather }) => {
     if (!weather || !weather.current) return null; // Don't render if weather data is not available
 
@@ -55,7 +58,7 @@ const WeatherRecommendations = ({ weather }) => {
     };
 
     return (
-        <div>
+        <div class="weather-recommendations">
             <h3>Recommendations:</h3>
             <ul>
                 {getRecommendations().map((recommendation, index) => (
