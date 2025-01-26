@@ -10,8 +10,9 @@ const SearchBar = ({ city, handleCityChange, handleCitySelect, handleSearch, sug
                 onChange={(e) => handleCityChange(e.target.value)} // Update city on input change
                 placeholder="Enter city name"
                 className="search-bar-input"
+                aria-label="City Name Input"
             />
-            <button onClick={handleSearch} className="search-button">
+            <button onClick={handleSearch} className="search-button" aria-label="Search Button">
                 Search
             </button>
 

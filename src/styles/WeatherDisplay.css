@@ -5,16 +5,16 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto;
+    margin: 40px auto;
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
 
 /* Heading for the city name */
-.city-name {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
+.weather-display h2 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    color: #3498db;
 }
 
 /* Weather info container */
@@ -23,31 +23,44 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Weather icon styling */
-.weather-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
+.weather-info img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0px;
 }
 
-/* Weather details section */
+/* Weather details Alignment */
 .weather-details {
     text-align: left;
 }
 
-/* Styling for individual weather parameters */
-.temp, .condition, .humidity, .wind-speed, .feels-like {
-    font-size: 16px;
-    margin-bottom: 10px;
+/* Temprature Heading styling */
+.weather-details .temp {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
     color: #555;
+}
+
+/* Styling for every weather parameters*/
+.weather-details p{
+    font-size: 1.3rem;
+    color: #777;
+    margin-bottom: 10px;
 }
 
 /* Error message when no data is available */
 .no-data {
     color: #e74c3c;
-    font-size: 18px;
+    font-size: 1.2rem;
     text-align: center;
     font-weight: bold;
 }

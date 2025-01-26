@@ -3,24 +3,28 @@
 /* Container for the search bar */
 .search-bar-container {
     position: relative;
-    margin: 30px auto;
-    width: 450px;
-    text-align: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px; /*Limit the maximum width*/
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f9f9f9; /* Light background for the container */
+    padding: 10px 15px;
+    border-radius: 10px; /* Soft, rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Input field style */
+/* Input Field */
 .search-bar-input {
-    width: 80%; /* 75% of the container width */
-    padding: 12px;
-    font-size: 18px;
-    border: 1px solid #ccc;
+    flex-grow: 1; /* Responsive width */
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     outline: none;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box; /*Prevents padding from affecting the width*/
+    transition: all 0.3s ease;
+    z-index: 1; /* Ensure it is above other elements */
 }
 
 /* Input field focus state */
@@ -31,7 +35,7 @@
 
 /* Button style */
 .search-button {
-    width: 20%; /* 20% of the container width */
+    min-width: 120px; /* Button size responsiveness */
     margin-left: 10px;
     padding: 12px;
     background-color: #4CAF50;
@@ -39,7 +43,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
@@ -50,30 +54,35 @@
 
 /* Suggestions dropdown */
 .suggestions-list {
+    margin-top: 5px;
     position:absolute;
-    top: 100%; /* Position below the input field */
+    top: 100%;
     left: 0;
-    right: 0;
-    width: 78%; /* Ensure the dropdown is the same width as the input */
+    width: 100%; /* Ensure the dropdown is the same width as the input */
     list-style-type: none;
     padding: 0;
     margin: 0;
-    border: 1px solid #ccc;
     background: #fff;
-    z-index: 10;
-    max-height: 150px;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px; /* Rounded corners for the dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    border: 1px solid #ccc;
     box-sizing: border-box; /*Prevents padding from affecting the width*/
 }
 
 /* Individual suggestion item */
 .suggestion-item {
-    padding: 8px 12px; /* Adjust padding for a better look */
+    font-size: 16px;
+    padding: 10px 15px; /* Adjust padding for a better look */
     cursor: pointer;
-    border-bottom: 1px solid #eee;
     transition: background-color 0.3s ease;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none; /* Remove border for the last item */
 }
 
 /* Suggestion item hover effect */
@@ -81,3 +90,5 @@
     background-color: #f0f0f0;
     padding-left: 20px; /* Indicate hover with padding shift */
 }
+
+

@@ -58,7 +58,7 @@ const WeatherRecommendations = ({ weather }) => {
     };
 
     return (
-        <div class="weather-recommendations">
+        <div className="weather-recommendations">
             <h3>Recommendations:</h3>
             <ul>
                 {getRecommendations().map((recommendation, index) => (
