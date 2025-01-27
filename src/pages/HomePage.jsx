@@ -51,7 +51,7 @@ const Home = () => {
             setLoading(false);
             return;
         }
-        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
         try {
             const response = await fetch(url);
             const data = await response.json();

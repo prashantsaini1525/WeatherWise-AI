@@ -1,21 +1,20 @@
 import React, { useState } from "react";
+import "../styles/GlobalComparison.css"; // Import the CSS file
 
 const GlobalComparison = () => {
-    const [cities, setCities] = useState([""]); // Starts with one empty input field
-    const [suggestions, setSuggestions] = useState([]); // Suggestions for city search
-    const [activeInput, setActiveInput] = useState(null); // Track the active input
+    const [cities, setCities] = useState([""]);
+    const [suggestions, setSuggestions] = useState([]);
+    const [activeInput, setActiveInput] = useState(null);
     const [weatherData, setWeatherData] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
-    // Update city input and fetch suggestions
     const handleCityChange = async (index, value) => {
         const updatedCities = [...cities];
         updatedCities[index] = value;
         setCities(updatedCities);
 
-        // Fetch suggestions for the city
         if (value.trim()) {
             try {
                 const response = await fetch(
@@ -23,7 +22,7 @@ const GlobalComparison = () => {
                 );
                 const data = await response.json();
                 setSuggestions(data);
-                setActiveInput(index); // Set the active input to this field
+                setActiveInput(index);
             } catch (error) {
                 console.error("Error fetching suggestions:", error);
             }
@@ -32,30 +31,39 @@ const GlobalComparison = () => {
         }
     };
 
-    // Select city from suggestions
     const handleCitySelect = (index, suggestion) => {
         const cityName = `${suggestion.name}, ${suggestion.region}, ${suggestion.country}`;
         const updatedCities = [...cities];
         updatedCities[index] = cityName;
         setCities(updatedCities);
 
-        // Clear suggestions and reset the active input
         setSuggestions([]);
         setActiveInput(null);
     };
 
-    // Add a new input field for another city
     const handleAddCity = () => {
         setCities([...cities, ""]);
     };
 
-    // Remove a city from the list
     const handleRemoveCity = (index) => {
         const updatedCities = cities.filter((_, i) => i !== index);
         setCities(updatedCities);
     };
 
-    // Fetch weather data for all cities
+    const handleSwapCities = () => {
+        if (cities.length === 2) {
+            const swappedCities = [cities[1], cities[0]];
+            setCities(swappedCities);
+        } else {
+            alert("You must have exactly two cities to swap.");
+        }
+    };
+
+    const handleResetCities = () => {
+        setCities([""]);
+        setWeatherData([]);
+    };
+
     const handleCompare = async () => {
         setLoading(true);
         setWeatherData([]);
@@ -66,7 +74,7 @@ const GlobalComparison = () => {
                     if (!city.trim()) {
                         return { city, error: "City name cannot be empty." };
                     }
-                    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+                    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=yes`;
                     const response = await fetch(url);
                     const data = await response.json();
                     if (data.error) {
@@ -84,48 +92,34 @@ const GlobalComparison = () => {
     };
 
     return (
-        <div>
+        <div className="global-comparison-container">
             {/* Input fields for cities */}
             {cities.map((city, index) => (
-                <div key={index} style={{ marginBottom: "10px", position: "relative" }}>
+                <div key={index} className="city-input-container">
                     <input
                         type="text"
                         placeholder={`City ${index + 1}`}
                         value={city}
                         onChange={(e) => handleCityChange(index, e.target.value)}
-                        onFocus={() => setActiveInput(index)} // Set active input
-                        onBlur={() => setTimeout(() => setSuggestions([]), 200)} // Delay clearing to allow click
-                        style={{ marginRight: "10px", width: "300px" }}
+                        onFocus={() => setActiveInput(index)}
+                        onBlur={() => setTimeout(() => setSuggestions([]), 200)}
+                        className="city-input"
                     />
-                    <button onClick={() => handleRemoveCity(index)} disabled={cities.length === 1}>
+                    <button
+                        onClick={() => handleRemoveCity(index)}
+                        disabled={cities.length === 1}
+                    >
                         Remove
                     </button>
 
                     {/* Suggestions dropdown */}
                     {activeInput === index && suggestions.length > 0 && (
-                        <ul
-                            style={{
-                                position: "absolute",
-                                top: "40px",
-                                left: 0,
-                                listStyleType: "none",
-                                backgroundColor: "#fff",
-                                border: "1px solid #ccc",
-                                padding: "10px",
-                                maxHeight: "150px",
-                                overflowY: "auto",
-                                zIndex: 10,
-                                width: "300px",
-                            }}
-                        >
+                        <ul className="suggestions-dropdown">
                             {suggestions.map((suggestion, i) => (
                                 <li
                                     key={i}
                                     onClick={() => handleCitySelect(index, suggestion)}
-                                    style={{
-                                        cursor: "pointer",
-                                        padding: "5px",
-                                    }}
+                                    className="suggestion-item"
                                 >
                                     {suggestion.name}, {suggestion.region}, {suggestion.country}
                                 </li>
@@ -135,30 +129,47 @@ const GlobalComparison = () => {
                 </div>
             ))}
 
-            <button onClick={handleAddCity} style={{ marginTop: "10px" }}>
-                Add City
-            </button>
+            <div className="button-container">
+                <button onClick={handleAddCity} className="add-city-btn">
+                    +
+                </button>
 
-            <button
-                onClick={handleCompare}
-                style={{ marginLeft: "10px" }}
-                disabled={cities.some((city) => !city.trim())} // Disable if any input is empty
-            >
-                Compare Weather
-            </button>
+                <div className="button-group">
+                    <button
+                        onClick={handleSwapCities}
+                        className="swap-cities-btn"
+                        disabled={cities.length !== 2}
+                    >
+                        Swap Cities
+                    </button>
+                    <button onClick={handleResetCities} className="reset-cities-btn">
+                        Reset Cities
+                    </button>
+                    <button
+                        onClick={handleCompare}
+                        className="compare-weather-btn"
+                        disabled={
+                            cities.length < 2 || cities.some((city) => !city.trim())
+                        }
+                    >
+                        Compare
+                    </button>
+                </div>
+            </div>
 
-            {loading && <p>Loading weather data...</p>}
+            {loading && <p className="loading-text">Loading weather data...</p>}
 
             {/* Weather data display */}
             {weatherData.length > 0 && (
-                <table border="1" style={{ marginTop: "20px", width: "100%" }}>
+                <table className="weather-table">
                     <thead>
                         <tr>
                             <th>City</th>
                             <th>Temperature (°C)</th>
-                            <th>Condition</th>
+                            <th>Weather</th>
                             <th>Humidity (%)</th>
                             <th>Feels Like (°C)</th>
+                            <th>Gasses (μg/m3)</th>
                             <th>Error</th>
                         </tr>
                     </thead>
@@ -170,7 +181,19 @@ const GlobalComparison = () => {
                                 <td>{item.data?.current?.condition?.text || "N/A"}</td>
                                 <td>{item.data?.current?.humidity || "N/A"}</td>
                                 <td>{item.data?.current?.feelslike_c || "N/A"}</td>
-                                <td>{item.error || "None"}</td>
+                                <td>
+                                    {item.data?.current?.air_quality ? (
+                                        Object.entries(item.data.current.air_quality)
+                                            .filter(([key]) => ["co", "no2", "o3"].includes(key))
+                                            .map(([key, value]) => `${key.toUpperCase()}: ${value}`)
+                                            .join(", ")
+                                    ) : (
+                                        "N/A"
+                                    )}
+                                </td>
+                                <td>
+                                    {item.error || "No data error available for this city."}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

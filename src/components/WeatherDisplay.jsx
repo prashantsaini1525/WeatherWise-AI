@@ -47,6 +47,9 @@ const WeatherDisplay = ({ weather, loading }) => {
                     <p className="visibility">Visibility: {weather.current.vis_km} km</p>
                     <p className="gust">Gust: {weather.current.gust_kph} km/h</p>
                     <p className="heatindex">Heat Index: {weather.current.heatindex_c}°C</p>
+                    <p className="gass">Nitrogen (NO2): {weather.current.air_quality.no2} μg/m3</p>
+                    <p className="gass">Carbon Monoxide (CO): {weather.current.air_quality.co} μg/m3</p>
+                    <p className="gass">Ozone (O3): {weather.current.air_quality.o3} μg/m3</p>
                     <p className="last-updated">Last Updated: {weather.current.last_updated}</p>
                 </div>
             </div>
