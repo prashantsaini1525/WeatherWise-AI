@@ -6,11 +6,3 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Header Styles */
-h1 {
-    text-align: center;
-    color: #3498db;
-    font-size: 3rem;
-    margin-top: 20px;
-}

@@ -1,4 +1,5 @@
 import React from 'react';
+import PageHeading from "../components/PageHeading"; // Import the PageHeading component
 import VoiceAssistant from '../components/VoiceAssistant';
 
 const VoiceAssistantPage = () => {
@@ -15,12 +16,13 @@ const VoiceAssistantPage = () => {
 
     return (
         <div>
-            <h1>Voice Assistant</h1>
-            <p>Speak into the microphone to interact with the app.</p>
+            <PageHeading
+                title="Voice Assistant"
+                subtitle="Interact with the app using voice commands for a seamless experience."
+            />
             <VoiceAssistant onCommand={handleCommand} />
         </div>
     );
 };
 
 export default VoiceAssistantPage;
-

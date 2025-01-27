@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import WeatherDisplay from "../components/WeatherDisplay";
 import WeatherRecommendations from "../components/WeatherRecommendations";
 import RecentSearches from "../components/RecentSearches";
+import PageHeading from "../components/PageHeading";
 import "../styles/HomePage.css";
 
 const Home = () => {
@@ -17,7 +18,6 @@ const Home = () => {
         setRecentCities(savedCities);
     }, []);
 
-    // Handle city input change and fetch suggestions
     const handleCityChange = async (value) => {
         setCity(value);
         const apiKey = import.meta.env.VITE_API_KEY;
@@ -37,10 +37,9 @@ const Home = () => {
         }
     };
 
-    // Handle selecting a city from suggestions
     const handleCitySelect = (selectedCity) => {
-        setCity(selectedCity); // Update the input with the selected city
-        setSuggestions([]); // Clear suggestions after selection
+        setCity(selectedCity);
+        setSuggestions([]);
     };
 
     const handleSearch = async () => {
@@ -78,7 +77,12 @@ const Home = () => {
 
     return (
         <div>
-            <h1>WeatherWise AI</h1>
+            <PageHeading
+                title="WeatherWise AI"
+                subtitle="Get accurate, real-time weather updates powered by AI!"
+            />
+
+            {/* SearchBar Component */}
             <SearchBar
                 city={city}
                 handleCityChange={handleCityChange}
@@ -86,7 +90,7 @@ const Home = () => {
                 handleSearch={handleSearch}
                 suggestions={suggestions}
             />
-            {/* Pass loading to WeatherDisplay */}
+
             <WeatherDisplay weather={weather} loading={loading} />
             <WeatherRecommendations weather={weather} />
             <RecentSearches recentCities={recentCities} deleteRecentCity={deleteRecentCity} />
