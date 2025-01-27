@@ -75,8 +75,14 @@
 
 /* Message when no recent searches are available */
 .no-recent-searches {
-    color: #e67e22;
+    background-color: #f0f4f8;
+    border: 1px solid #ddd;
+    padding: 15px;
     font-size: 1.2rem;
+    color: #e74c3c;
     text-align: center;
+    border-radius: 8px;
     font-weight: bold;
+    max-width: 400px;
+    margin: 20px auto;
 }

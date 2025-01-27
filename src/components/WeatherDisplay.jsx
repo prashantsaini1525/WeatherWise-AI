@@ -1,13 +1,31 @@
-import React from 'react';
-import "../styles/WeatherDisplay.css";  // Ensure you import the CSS file
+import React from "react";
+import "../styles/WeatherDisplay.css"; // Import your styles
 
-const WeatherDisplay = ({ weather }) => {
-    if (!weather) return <p className="no-data">No data available. Please check the city name.</p>;
+const WeatherDisplay = ({ weather, loading }) => {
+    if (loading) {
+        return (
+            <div className="weather-display">
+                <div className="loader-container">
+                    <div className="loader"></div>
+                    <p>Fetching weather data...</p>
+                </div>
+            </div>
+        );
+    }
 
+    if (!weather) {
+        return (
+            <div className="weather-display">
+                <p className="no-data">No data available. Please check the city name.</p>
+            </div>
+        );
+    }
 
     return (
         <div className="weather-display">
-            <h2>{weather.location.name}, {weather.location.region}</h2>
+            <h2>
+                {weather.location.name}, {weather.location.region}
+            </h2>
             <h2>{weather.location.country}</h2>
             <div className="weather-info">
                 <img
@@ -28,9 +46,7 @@ const WeatherDisplay = ({ weather }) => {
                     <p className="precipitation">Precipitation: {weather.current.precip_mm} mm</p>
                     <p className="visibility">Visibility: {weather.current.vis_km} km</p>
                     <p className="gust">Gust: {weather.current.gust_kph} km/h</p>
-                    <p className="uv-index-description">{weather.current.uv_description}</p>
                     <p className="heatindex">Heat Index: {weather.current.heatindex_c}°C</p>
-                    {/* <p className="air-quality">Air Quality (NO2): {weather.current.no2} µg/m³</p> */}
                     <p className="last-updated">Last Updated: {weather.current.last_updated}</p>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import WeatherDisplay from "../components/WeatherDisplay";
 import WeatherRecommendations from "../components/WeatherRecommendations";
 import RecentSearches from "../components/RecentSearches";
 import "../styles/HomePage.css";
+
 const Home = () => {
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState(null);
@@ -85,8 +86,8 @@ const Home = () => {
                 handleSearch={handleSearch}
                 suggestions={suggestions}
             />
-            {loading && <p>Loading...</p>}
-            <WeatherDisplay weather={weather} />
+            {/* Pass loading to WeatherDisplay */}
+            <WeatherDisplay weather={weather} loading={loading} />
             <WeatherRecommendations weather={weather} />
             <RecentSearches recentCities={recentCities} deleteRecentCity={deleteRecentCity} />
         </div>
