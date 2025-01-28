@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/GlobalComparison.css"; // Import the CSS file
+import RecentSearches from "../components/RecentSearches"; // Import the RecentSearches component
 
 const GlobalComparison = () => {
     const [cities, setCities] = useState([""]);
@@ -7,6 +8,8 @@ const GlobalComparison = () => {
     const [activeInput, setActiveInput] = useState(null);
     const [weatherData, setWeatherData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [recentCities, setRecentCities] = useState([]);  // Added recentCities state
+    const [tempCities, setTempCities] = useState([]);  // Temporary state to track selected cities
 
     const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -39,10 +42,23 @@ const GlobalComparison = () => {
 
         setSuggestions([]);
         setActiveInput(null);
+
+        // Track selected city in temporary cities list
+        setTempCities((prev) => {
+            const newTempCities = [...prev];
+            if (!newTempCities.includes(cityName)) {
+                newTempCities.push(cityName);
+            }
+            return newTempCities;
+        });
     };
 
     const handleAddCity = () => {
-        setCities([...cities, ""]);
+        if (cities.length < 10) {
+            setCities([...cities, ""]);
+        } else {
+            alert("You can only compare up to 10 cities at a time.");
+        }
     };
 
     const handleRemoveCity = (index) => {
@@ -84,11 +100,24 @@ const GlobalComparison = () => {
                 })
             );
             setWeatherData(results);
+
+            // After comparison, add selected cities to recentCities
+            setRecentCities((prev) => {
+                const newRecentCities = [...prev, ...tempCities];
+                // Ensure unique cities in the recent searches
+                const uniqueCities = [...new Set(newRecentCities)];
+                return uniqueCities.slice(0, 10); // Limit to 5 cities
+            });
         } catch (error) {
             console.error("Error fetching weather data:", error);
         } finally {
             setLoading(false);
         }
+    };
+
+    // Define deleteRecentCity function
+    const deleteRecentCity = (city) => {
+        setRecentCities(recentCities.filter((item) => item !== city));
     };
 
     return (
@@ -199,6 +228,9 @@ const GlobalComparison = () => {
                     </tbody>
                 </table>
             )}
+
+            {/* Recent Searches Component */}
+            <RecentSearches recentCities={recentCities} deleteRecentCity={deleteRecentCity} />
         </div>
     );
 };
