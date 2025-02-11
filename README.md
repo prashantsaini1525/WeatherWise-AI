@@ -114,7 +114,7 @@ During development, several challenges were addressed:
 
 3. **Set Up Environment Variables:**
 
-   - Create a .env file in the root directory and add:
+   - Create a .env file in the root directory and add: <br>
 
    ```bash
 
