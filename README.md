@@ -114,11 +114,10 @@ During development, several challenges were addressed:
 
 3. **Set Up Environment Variables:**
 
-   - Create a .env file in the root directory and add: <br>
-
-   ```bash
-
-    VITE_API_KEY=your_weatherapi_key
+   - Create a `.env` file in the root directory and add: <br><br>
+  
+  ```bash
+  VITE_API_KEY=your_weatherapi_key
 
    ```
 
