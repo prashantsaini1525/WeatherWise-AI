@@ -147,7 +147,7 @@ const GlobalComparison = () => {
                             {suggestions.map((suggestion, i) => (
                                 <li
                                     key={i}
-                                    onClick={() => handleCitySelect(index, suggestion)}
+                                    onMouseDown={() => handleCitySelect(index, suggestion)}
                                     className="suggestion-item"
                                 >
                                     {suggestion.name}, {suggestion.region}, {suggestion.country}
