@@ -114,7 +114,7 @@ During development, several challenges were addressed:
 
 3. **Set Up Environment Variables:**
 
-   - Create a `.env` file in the root directory and add: <br><br>
+   - Create a `.env` file in the root directory and add:
   
   ```bash
   VITE_API_KEY=your_weatherapi_key
@@ -124,7 +124,10 @@ During development, several challenges were addressed:
    - **Note:** For production, set these variables in the Vercel Dashboard under Project Settings → Environment Variables.
 
 4. **Run the App Locally:**
+
    ```bash
    - npm run dev
+
    ```
+
    - Visit http://localhost:3000 in your browser.
