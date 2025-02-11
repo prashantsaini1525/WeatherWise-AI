@@ -115,8 +115,8 @@ During development, several challenges were addressed:
 3. **Set Up Environment Variables:**
 
    - Create a .env file in the root directory and add:
-     VITE_API_KEY=your_weatherapi_key
-     **Note:** For production, set these variables in the Vercel Dashboard under Project Settings → Environment Variables.
+    VITE_API_KEY=your_weatherapi_key
+   - **Note:** For production, set these variables in the Vercel Dashboard under Project Settings → Environment Variables.
 
 4. **Run the App Locally:**
    ```bash
