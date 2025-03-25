@@ -142,10 +142,10 @@ During development, several challenges were addressed:
 
 - Create a `.env` file in the root directory and add:
 
-    ```bash
-    VITE_API_KEY=your_weatherapi_key
+  ```bash
+  VITE_API_KEY=your_weatherapi_key
 
-    ```
+  ```
 
 - **Note:** For production, set these variables in the Vercel Dashboard under Project Settings → Environment Variables.
 
@@ -157,3 +157,104 @@ During development, several challenges were addressed:
    ```
 
    - Visit http://localhost:3000 in your browser.
+
+---
+
+# Environment Variables
+
+To run WeatherWise AI successfully, you'll need to configure the following environment variables:
+
+## VITE_API_KEY
+
+Your WeatherAPI key is required for fetching weather data. For local development, create a `.env` file in the project root and add:
+
+```bash
+VITE_API_KEY=your_weatherapi_key
+```
+
+For production deployments (e.g., on Vercel), set these environment variables in the platform’s dashboard under the project settings.
+
+---
+
+# Deployment
+
+WeatherWise AI is optimized for deployment with Vercel. Follow these steps to deploy:
+
+## Connect Your Repository
+
+- **Sign in to your [Vercel account](https://vercel.com/).**
+- **Import your WeatherWise AI repository from GitHub.**
+- **Vercel will auto-detect the Vite (React) configuration.**
+
+## Configure Environment Variables
+
+- **Navigate to your project settings in the Vercel Dashboard.**
+- **Add the required environment variables (e.g., `VITE_API_KEY`).**
+
+## Automatic Deployments
+
+- **Every push to your connected branch triggers a new deployment.**
+- **Once deployed, access your app via the URL provided by Vercel.**
+
+# Future Enhancements
+
+WeatherWise AI is a work in progress with plans for continuous improvement. Future enhancements include:
+
+- **Advanced Forecasting:**  
+  Integrate extended forecasts and historical weather data for more in-depth insights.
+
+- **User Personalization:**  
+  Implement user accounts to save favorite locations and enable custom weather notifications.
+
+- **UI/UX Improvements:**  
+  Enhance the interface with features like dark mode and additional accessibility options.
+
+- **Performance Optimization:**  
+  Refine data fetching and state management to boost performance further.
+
+- **Multi-language Support:**  
+  Add internationalization to make the app accessible to a global audience.
+
+---
+
+# Contributing
+
+Contributions are welcome! If you’d like to help improve WeatherWise AI, please follow these steps:
+
+## Fork the Repository
+
+- Create your own fork of the project on GitHub.
+
+## Create a Feature Branch
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+## Commit Your Changes
+
+- Write clear, concise commit messages.
+
+## Push Your Branch
+
+```bash
+git push origin feature/your-feature-name
+```
+
+## Open a Pull Request:
+
+- Provide a detailed description of your changes and submit a PR for review.
+
+# License
+
+WeatherWise AI is open source and distributed under the MIT License.  
+For more details, please see the [LICENSE](./LICENSE) file.
+
+---
+
+# Live Demo
+
+Experience WeatherWise AI in action at:  
+[WeatherWise AI Live Demo](https://weather-wise-ai.vercel.app/)
+
+> **Note:** Replace the demo URL with your actual deployed application's link.
