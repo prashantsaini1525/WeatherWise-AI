@@ -1,6 +1,8 @@
 # WeatherWise AI
 
-![WeatherWise AI Banner](https://via.placeholder.com/1200x300?text=WeatherWise+AI)
+<div align="center">
+  <img src="./public/weather-underground.svg" alt="WeatherWise AI Banner" width="300"/>
+</div>
 
 **WeatherWise AI** is a modern, full-featured weather application that delivers real-time weather updates and personalized recommendations using cutting-edge web technologies. Built with React and Vite on the frontend and leveraging secure serverless functions on Vercel, this project demonstrates a strong grasp of modern web development, API integration, and scalable architecture.
 
@@ -9,6 +11,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Project Demo Images](#project-demo-images)
 - [Features](#features)
 - [Technical Highlights](#technical-highlights)
 - [Architecture & Design](#architecture--design)
@@ -26,6 +29,27 @@
 ## Overview
 
 WeatherWise AI provides accurate and real-time weather information for any city worldwide. Users can search for locations, view detailed weather metrics (temperature, humidity, wind speed, air quality, and more), and even see recent search history. By using serverless functions to fetch data securely, the app ensures that sensitive API keys remain hidden and minimizes CORS issues—an approach that highlights best practices in secure API integration and modern deployment.
+
+---
+
+## Project Demo Images
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./public/assets/WeatherWise-Home.png" alt="Demo Image 1" width="300"/>
+      <br><sub>Demo Image 1</sub>
+    </td>
+    <td align="center">
+      <img src="./public/assets/WeatherWise-Comparison.png" alt="Demo Image 2" width="300"/>
+      <br><sub>Demo Image 2</sub>
+    </td>
+    <td align="center">
+      <img src="./public/assets/WeatherWise-ClimateChange.png" alt="Demo Image 3" width="300"/>
+      <br><sub>Demo Image 3</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
